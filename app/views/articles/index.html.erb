@@ -1,0 +1,6 @@
+<h3>Here's whats for sale in <%= @category.name %></h3>
+<ul>
+<% @article.each do |article| %>
+<li><a href="<%= category_article_path(article.category.id, article) %>"><%= article.name %></a></li>
+<% end %>
+</ul>
