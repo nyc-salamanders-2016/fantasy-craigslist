@@ -1,7 +1,8 @@
 <h3>Here are the categories</h3>
-
+<%= link_to "Random listing", category_article_path(category = @categories.sample, category.articles.sample) %>
 <ul>
   <% @categories.each do |category| %>
     <li><a href="<%= category_articles_path(category)%>"><%= category.name %></a></li>
   <% end %>
 </ul>
+
