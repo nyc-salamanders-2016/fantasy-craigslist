@@ -2,6 +2,6 @@
 <%= form_for :article do |f| %>
   <%= f.text_field :name %>
   <%= f.text_area :description %>
-  <%= f.integer :price %>
+  <%= f.number_field :price %>
   <%= f.submit %>
   <% end %>
