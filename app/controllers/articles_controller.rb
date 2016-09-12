@@ -19,9 +19,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if params[:key] && @article.link == params[:key]
-
+      render 'edit'
     else
-      flash[:alert] = "I don't know that link brah!"
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 
@@ -49,6 +49,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @category = Category.find(params[:category_id])
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to category_articles_path(@category)
   end
 
   private
