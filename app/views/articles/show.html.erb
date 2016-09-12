@@ -2,3 +2,5 @@
 
 Description: <%= @article.description %><br>
 Price: $<%= @article.price %>
+
+<%= link_to "Edit listing", edit_category_article_path(@category, @article)%>

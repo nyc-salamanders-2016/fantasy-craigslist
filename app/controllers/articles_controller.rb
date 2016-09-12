@@ -15,6 +15,8 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @category = Category.find(params[:category_id])
+    @article = Article.find(params[:id])
   end
 
   def create
@@ -29,6 +31,14 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @category = Category.find(params[:category_id])
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to category_article_path(@category, @article)
+    else
+      flash[:alert] = "Errors updating your listing!"
+      render "edit"
+    end
   end
 
   def destroy
