@@ -4,3 +4,5 @@
 <li><a href="<%= category_article_path(article.category.id, article) %>"><%= article.name %></a></li>
 <% end %>
 </ul>
+
+<%= link_to "Create new listing.", new_category_article_path %>

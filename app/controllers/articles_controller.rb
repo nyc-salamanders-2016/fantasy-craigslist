@@ -10,12 +10,22 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @category = Category.find(params[:category_id])
+    @article = Article.new
   end
 
   def edit
   end
 
   def create
+    @category = Category.find(params[:category_id])
+    @article = @category.articles.build(article_params)
+    if @article.save
+      redirect_to category_article_path(@category, @article)
+    else
+      flash[:alert] = "Errors creating new listing!"
+      render "new"
+    end
   end
 
   def update
