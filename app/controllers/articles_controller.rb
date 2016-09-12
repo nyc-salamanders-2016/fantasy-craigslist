@@ -17,12 +17,19 @@ class ArticlesController < ApplicationController
   def edit
     @category = Category.find(params[:category_id])
     @article = Article.find(params[:id])
+
+    if params[:key] && @article.link == params[:key]
+
+    else
+      flash[:alert] = "I don't know that link brah!"
+    end
   end
 
   def create
     @category = Category.find(params[:category_id])
     @article = @category.articles.build(article_params)
     if @article.save
+      flash[:unique_url] = "https://nameless-hamlet-62894.herokuapp.com/categories/#{@category.id}/articles/#{@article.id}/edit?key=#{@article.link}"
       redirect_to category_article_path(@category, @article)
     else
       flash[:alert] = "Errors creating new listing!"

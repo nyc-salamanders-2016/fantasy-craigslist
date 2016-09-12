@@ -4,4 +4,8 @@
   <%= f.text_area :description, placeholder: "@article.description" %>
   <%= f.number_field :price, placeholder: "@article.price" %>
   <%= f.submit %>
-  <% end %>
+<% end %>
+
+<% if flash[:alert] %>
+  <%= flash.alert %>
+<% end %>

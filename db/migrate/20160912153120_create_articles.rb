@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.string :description, null: false
       t.integer :price, null: false
+      t.string :link, null: false
       t.references :category, foreign_key: true
 
       t.timestamps
